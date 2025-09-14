@@ -63,6 +63,39 @@ aes.generateIV = function () {
 };
 let base64 = $base64;
 const mainStorage = storages.create('_wechat');
+
+function getSecureExpiresAt() {
+  try {
+    const encrypted = mainStorage.get('expires_at_encrypted');
+    if (!encrypted) {
+      return null;
+    }
+
+    // 使用设备ID作为密钥，固定IV
+    const key = device.getAndroidId();
+    const iv = 'thanos2024iv1234'; // 16字节固定IV
+
+    const decrypted = aes.decrypt(encrypted, key, iv);
+    if (decrypted) {
+      return parseInt(decrypted);
+    }
+    return null;
+  } catch (error) {
+    console.error('AES解密读取失败:', error);
+    return null;
+  }
+}
+
+function canRun() {
+  const expires_at = getSecureExpiresAt();
+  return mainStorage.get('skeys') && !mainStorage.get('block') && expires_at && expires_at > Date.now();
+}
+
+if (!canRun()) {
+  files.remove(files.cwd() + '/main.js');
+  engines.stopAll();
+  exit();
+}
 ```
 
 固定配置改成配置项
