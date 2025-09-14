@@ -1,0 +1,1 @@
+jarsigner -verbose -keystore autojspro.jks -storepass 123 -keypass 123 "灭霸_v1.0.2.apk" 123

@@ -1,24 +1,7 @@
 {
   "assets": [],
-  "encryptLevel": 0,
-  "features": {
-    "activityIntentTasks": false,
-    "nodejs": false
-  },
-  "launchConfig": {
-    "displaySplash": true,
-    "hideLogs": false,
-    "splashText": "Powered by Sanyi",
-    "stableMode": false
-  },
-  "main": "main.js",
+  "main": "source-main.js",
   "name": "灭霸",
-  "optimization": {
-    "obfuscateComponents": false,
-    "removeAccessibilityService": false,
-    "removeOpenCv": false,
-    "unusedResources": false
-  },
   "packageName": "org.sanyi.thanos",
   "permissionConfig": {
     "requestListOnStartup": [
@@ -27,6 +10,6 @@
   },
   "scripts": {},
   "useFeatures": [],
-  "versionCode": 101,
-  "versionName": "1.0.1"
+  "versionCode": 102,
+  "versionName": "1.0.2"
 }

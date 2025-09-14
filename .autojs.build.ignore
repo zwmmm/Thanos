@@ -1,0 +1,7 @@
+/build
+/source
+*.md
+.vscode
+.git
+/node_modules
+source-main.js
